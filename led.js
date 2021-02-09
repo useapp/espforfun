@@ -2,6 +2,7 @@
       this.pin = pin ;
       this.status = false;
       this.blinktimer = null;
+      return this;
     };
   
     /**
