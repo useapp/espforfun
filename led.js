@@ -1,6 +1,6 @@
-class LED{
 
-    constructor(pin) {
+
+    function LED(pin) {
       this.pin = pin ;
       this.status = false;
       this.blinktimer = null;
@@ -9,7 +9,7 @@ class LED{
     /**
     * On led
     */
-    setOn(){
+   LED.prototype.setOn = function(){
       this.stopBlinking();
       this.status = true;
       digitalWrite(this.pin, this.status);
@@ -18,7 +18,7 @@ class LED{
     /**
     * Off led
     */
-    setOff(){
+   LED.prototype.setOff = function(){
       this.stopBlinking();
       this.status = false;
       digitalWrite(this.pin, this.status);
@@ -27,7 +27,7 @@ class LED{
     /**
     * Toggle led
     */
-    toggle(){
+   LED.prototype.toggle = function(){
       this.stopBlinking();
       this.status = !this.status;
       digitalWrite(this.pin, this.status);
@@ -37,7 +37,7 @@ class LED{
     * blink the led
     * speed
     */
-    blink(speed){
+   LED.prototype.blink = function(speed){
       var _this = this;
       this.stopBlinking();
       this.blinktimer = setInterval(function(){
@@ -47,7 +47,7 @@ class LED{
       },speed);
     }
   
-    getStatus(){
+    LED.prototype.getStatus = function(){
       return this.status;
     }
   
@@ -55,20 +55,20 @@ class LED{
     /**
     *Set led PWM
     */
-    pwm(val){
+   LED.prototype.pwm = function(val){
       this.stopBlinking();
       analogWrite(this.pin, val);
     }
   
   
-    stopBlinking(){
+    LED.prototype.stopBlinking = function(){
       if(this.blinktimer){
         clearInterval(this.blinktimer);
         this.blinktimer = null;
       }
     }
   
-  }
+
 
   exports.connect = function (options) {
     var led = new LED(options);
