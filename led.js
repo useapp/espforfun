@@ -1,10 +1,8 @@
-
-
-    function LED(pin) {
+    LED = function (pin){
       this.pin = pin ;
       this.status = false;
       this.blinktimer = null;
-    }
+    };
   
     /**
     * On led
