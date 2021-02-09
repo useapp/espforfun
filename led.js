@@ -3,8 +3,7 @@
       this.status = false;
       this.blinktimer = null;
       return this;
-    };
-  
+    }
     /**
     * On led
     */
